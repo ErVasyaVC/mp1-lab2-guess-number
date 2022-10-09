@@ -6,7 +6,7 @@
 int main() {
     setlocale(LC_ALL, "Russian");
     srand(time(NULL));
-    int number = 0 + rand() % (1000), user_number = 1000000;
+    int number = 1 + rand() % (1000), user_number = 1000000;
     int min = 1, max = 1000, attempts = 0;
     char mode, answer;
     printf("Выберите режим работы 1 или 2: ");
@@ -14,7 +14,6 @@ int main() {
 
     switch (mode) {
         case '1':
-            srand(time(NULL));
             printf("Программа загадала число от 1 до 1000. Попробуйте угадать его)) : ");
             do{
                 scanf("%i", &user_number);
@@ -36,7 +35,7 @@ int main() {
             } while (user_number > 1000 || user_number < 0);
             while(user_number != number) {
                 srand(time(NULL));
-                number = min + rand() % (max-min-1);
+                number = min + rand() % (max-min+1);
                 printf("Это число %i ? ", number);
                 scanf("%c", &answer);
                 if ( scanf("%c", &answer) != 1) {// != 1 means scanf failed
